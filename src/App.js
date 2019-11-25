@@ -5,6 +5,7 @@ import Navigator from './components/Navigator';
 import Articles from './components/Articles';
 import { Router } from '@reach/router';
 import Topics from './components/Topics';
+import Article from './components/Article';
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
       <Navigator />
       <Router>
         <Articles path="/" />
-        <Topics path="/topics" />
+        <Topics path="/topics/" />
+        <Articles path="/topics/:topic_slug" />
+        <Article path="articles/:article_id" />
       </Router>
     </div>
   );

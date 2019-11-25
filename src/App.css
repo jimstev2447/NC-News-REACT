@@ -1,1 +1,25 @@
+.App {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  border: solid 2px black;
+}
 
+.App header {
+  border: solid 2px red;
+}
+
+.App nav {
+  border: solid 2px green;
+}
+
+.App .sortBar {
+  border: blue 2px solid;
+}
+
+.App main {
+  border: 2px teal solid;
+}
+
+.App article {
+  border: 2px brown solid;
+}
