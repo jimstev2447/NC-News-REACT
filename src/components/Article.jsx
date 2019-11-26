@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
 import * as api from '../uitls/utils';
-import CommentCard from './CommentCard';
 import Loader from './Loader';
 import ViewToggler from './ViewToggler';
 import Voter from './Voter';
 import { Link } from '@reach/router';
+import Comments from './Comments';
 
 class Article extends Component {
   state = {
     article: {},
-    comments: [],
     isLoading: true
   };
 
   componentDidMount() {
     const { article_id } = this.props;
-    Promise.all([
-      api.getSingleArticle(article_id),
-      api.getComments(article_id)
-    ]).then(([article, comments]) => {
-      this.setState({ article, comments, isLoading: false });
+    api.getSingleArticle(article_id).then(article => {
+      this.setState({ article, isLoading: false });
     });
   }
 
@@ -36,7 +32,6 @@ class Article extends Component {
   render() {
     const {
       article: { title, author, body, comment_count, votes, article_id },
-      comments,
       isLoading
     } = this.state;
 
@@ -53,9 +48,7 @@ class Article extends Component {
         </article>
 
         <ViewToggler>
-          {comments.map(comment => (
-            <CommentCard key={comment.comment_id} {...comment}></CommentCard>
-          ))}
+          <Comments article_id={this.props.article_id} />
         </ViewToggler>
         <Link to="/">
           <button>Home</button>

@@ -20,11 +20,8 @@ class Articles extends Component {
 
   updateArticles = (query = this.props.topic_slug, sort_by) => {
     this.setState({ isLoading: true }, () => {
-      console.log(this.state);
       api.getArticles(query, sort_by).then(({ articles, total_count }) => {
-        this.setState({ articles, isLoading: false, total_count }, () => {
-          console.log(this.state);
-        });
+        this.setState({ articles, isLoading: false, total_count }, () => {});
       });
     });
   };
