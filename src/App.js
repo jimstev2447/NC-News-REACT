@@ -9,7 +9,11 @@ import Article from './components/Article';
 
 class App extends Component {
   state = {
-    username: ''
+    username: undefined
+  };
+
+  signInUser = username => {
+    this.setState({ username });
   };
 
   render() {
@@ -17,7 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Navigator username={username} />
+        <Navigator username={username} signInUser={this.signInUser} />
         <Router>
           <Articles path="/" />
           <Topics path="/topics/" />

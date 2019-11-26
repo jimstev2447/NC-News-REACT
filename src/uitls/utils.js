@@ -35,3 +35,10 @@ exports.getComments = article_id => {
 exports.patchVotes = (id, type, inc_votes) => {
   return axios.patch(`${baseUrl}/api/${type}/${id}`, { inc_votes });
 };
+
+exports.getUsers = () => {
+  return axios.get(`${baseUrl}/api/users/`).then(({ data }) => {
+    console.log(data);
+    return data.users;
+  });
+};

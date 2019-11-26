@@ -41,7 +41,7 @@ class Article extends Component {
           <Comments article_id={this.props.article_id} />
         </ViewToggler>
         <ViewToggler buttonName="Add Comment">
-          <AddComment />
+          <AddComment username={this.props.username} />
         </ViewToggler>
       </main>
     );

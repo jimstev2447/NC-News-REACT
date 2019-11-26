@@ -3,6 +3,8 @@ import { Link } from '@reach/router';
 import * as api from '../uitls/utils';
 import Loader from './Loader';
 import TopicButton from './TopicButton';
+import UserLogin from './UserLogin';
+import ViewToggler from './ViewToggler';
 
 class Navigator extends Component {
   state = { topics: [], isLoading: true };
@@ -31,6 +33,12 @@ class Navigator extends Component {
             return <TopicButton key={topic.slug} topicName={topic.slug} />;
           })}
         </ul>
+        <ViewToggler buttonName="show users">
+          <UserLogin signInUser={this.props.signInUser} />
+        </ViewToggler>
+        <aside>
+          user: {this.props.username ? this.props.username : 'please sign in'}
+        </aside>
       </nav>
     );
   }

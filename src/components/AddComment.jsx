@@ -17,6 +17,7 @@ class AddComment extends Component {
     return (
       <form>
         <h4>Comment</h4>
+        <h5>uername: {this.props.username}</h5>
         <input onChange={this.handleChange} value={this.state.comment}></input>
         <button>Submit</button>
       </form>
