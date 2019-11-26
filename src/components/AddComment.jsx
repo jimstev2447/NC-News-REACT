@@ -7,17 +7,14 @@ class AddComment extends Component {
 
   handleChange = event => {
     const comment = event.target.value;
-
-    this.setState({ comment }, () => {
-      console.log(this.state.comment);
-    });
+    this.setState({ comment });
   };
 
   render() {
     return (
       <form>
         <h4>Comment</h4>
-        <h5>uername: {this.props.username}</h5>
+        <h5>username: {this.props.username}</h5>
         <input onChange={this.handleChange} value={this.state.comment}></input>
         <button>Submit</button>
       </form>

@@ -38,7 +38,6 @@ exports.patchVotes = (id, type, inc_votes) => {
 
 exports.getUsers = () => {
   return axios.get(`${baseUrl}/api/users/`).then(({ data }) => {
-    console.log(data);
     return data.users;
   });
 };

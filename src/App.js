@@ -9,7 +9,7 @@ import Article from './components/Article';
 
 class App extends Component {
   state = {
-    username: undefined
+    username: ''
   };
 
   signInUser = username => {

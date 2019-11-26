@@ -4,7 +4,6 @@ import Loader from './Loader';
 import ViewToggler from './ViewToggler';
 import Voter from './Voter';
 import Comments from './Comments';
-import AddComment from './AddComment';
 
 class Article extends Component {
   state = {
@@ -24,7 +23,6 @@ class Article extends Component {
       article: { title, author, body, comment_count, votes, article_id },
       isLoading
     } = this.state;
-
     return isLoading ? (
       <Loader />
     ) : (
@@ -38,10 +36,10 @@ class Article extends Component {
         </article>
 
         <ViewToggler buttonName="Show Comments">
-          <Comments article_id={this.props.article_id} />
-        </ViewToggler>
-        <ViewToggler buttonName="Add Comment">
-          <AddComment username={this.props.username} />
+          <Comments
+            article_id={this.props.article_id}
+            username={this.props.username}
+          />
         </ViewToggler>
       </main>
     );

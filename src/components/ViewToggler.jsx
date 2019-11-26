@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 
 class ViewToggler extends Component {
-  state = { isVisible: false, children: [] };
+  state = { isVisible: false };
 
   componentDidMount() {
     const isVisible = this.props.value;
-    const children = this.props.children;
-    this.setState({ isVisible, children });
+    this.setState({ isVisible });
   }
 
   handleClick = event => {
@@ -14,11 +13,11 @@ class ViewToggler extends Component {
   };
 
   render() {
-    const { isVisible, children } = this.state;
+    const { isVisible } = this.state;
     return (
       <>
         <button onClick={this.handleClick}>{this.props.buttonName}</button>
-        {isVisible && children}
+        {isVisible && this.props.children}
       </>
     );
   }

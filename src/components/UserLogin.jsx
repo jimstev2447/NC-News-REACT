@@ -30,7 +30,7 @@ class UserLogin extends Component {
             </button>
           );
         })}
-        <button name={undefined} onClick={this.handleClick}>
+        <button name={''} onClick={this.handleClick}>
           sign out
         </button>
       </div>

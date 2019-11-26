@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import CommentCard from './CommentCard';
 import * as api from '../uitls/utils';
 import Loader from './Loader';
+import ViewToggler from './ViewToggler';
+import AddComment from './AddComment';
 
 class Comments extends Component {
   state = {
@@ -19,6 +21,9 @@ class Comments extends Component {
     if (isLoading) return <Loader />;
     return (
       <section>
+        <ViewToggler buttonName="Add Comment">
+          <AddComment username={this.props.username} />
+        </ViewToggler>
         {comments.map(comment => {
           return <CommentCard key={comment.comment_id} {...comment} />;
         })}

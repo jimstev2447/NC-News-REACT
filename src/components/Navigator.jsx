@@ -33,7 +33,7 @@ class Navigator extends Component {
             return <TopicButton key={topic.slug} topicName={topic.slug} />;
           })}
         </ul>
-        <ViewToggler buttonName="show users">
+        <ViewToggler buttonName="sign in as ...">
           <UserLogin signInUser={this.props.signInUser} />
         </ViewToggler>
         <aside>
