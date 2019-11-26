@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import * as api from './utils';
 import CommentCard from './CommentCard';
-import ArticleFull from './ArticleFull';
 import Loader from './Loader';
 import ViewToggler from './ViewToggler';
+import Voter from './Voter';
+import { Link } from '@reach/router';
 
 class Article extends Component {
   state = {
     article: {},
     comments: [],
-    isLoading: true,
-    viewComments: false
+    isLoading: true
   };
 
   componentDidMount() {
@@ -23,25 +23,43 @@ class Article extends Component {
     });
   }
 
-  handleClick = event => {
-    this.setState({ viewComments: !this.state.viewComments });
-  };
+  // componentDidUpdate(previousProps) {
+  //   const { article_id } = this.props;
+
+  //   api.getComments(article_id).then(comments => {
+  //     this.setState({ comments });
+  //   });
+  // }
+
+  //
 
   render() {
-    const { article, comments, isLoading, viewComments } = this.state;
+    const {
+      article: { title, author, body, comment_count, votes, article_id },
+      comments,
+      isLoading
+    } = this.state;
+
     return isLoading ? (
       <Loader />
     ) : (
       <main>
-        <ArticleFull {...article} />
-        <button onClick={this.handleClick}>view comments</button>
-        <ViewToggler value={viewComments}>
-          {comments.map(comment => {
-            return (
-              <CommentCard key={comment.comment_id} {...comment}></CommentCard>
-            );
-          })}
+        <article>
+          <Voter votes={votes} type="articles" id={article_id} />
+          <h3>{title}</h3>
+          <p>Author: {author}</p>
+          <p>{body}</p>
+          <p>comment count: {comment_count}</p>
+        </article>
+
+        <ViewToggler>
+          {comments.map(comment => (
+            <CommentCard key={comment.comment_id} {...comment}></CommentCard>
+          ))}
         </ViewToggler>
+        <Link to="/">
+          <button>Home</button>
+        </Link>
       </main>
     );
   }

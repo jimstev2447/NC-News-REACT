@@ -23,3 +23,7 @@
 .App article {
   border: 2px brown solid;
 }
+
+.App aside {
+  border: hotpink 2px solid;
+}

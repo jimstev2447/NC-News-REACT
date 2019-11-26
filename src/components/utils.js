@@ -2,11 +2,11 @@ const axios = require('axios');
 
 const baseUrl = 'https://nc-news-project-backend-js.herokuapp.com';
 
-exports.getArticles = topic => {
+exports.getArticles = (topic, sort_by) => {
   return axios
-    .get(`${baseUrl}/api/articles`, { params: { topic } })
+    .get(`${baseUrl}/api/articles`, { params: { topic, sort_by } })
     .then(({ data }) => {
-      return data.articles;
+      return data;
     });
 };
 
@@ -30,4 +30,11 @@ exports.getComments = article_id => {
     .then(({ data: { comments } }) => {
       return comments;
     });
+};
+
+exports.patchVotes = (path, inc_votes) => {
+  console.log(`${baseUrl}${path}`);
+  return axios.patch(`${baseUrl}${path}`, { inc_votes }).then(data => {
+    console.log(data);
+  });
 };

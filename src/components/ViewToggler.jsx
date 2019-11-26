@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const ViewToggler = props => {
-  return props.value ? <div>{props.children}</div> : <></>;
-};
+class ViewToggler extends Component {
+  state = { isVisible: false, children: [] };
 
-//statefull component click changes that, state should just have bool in it
+  componentDidMount() {
+    const isVisible = this.props.value;
+    const children = this.props.children;
+    this.setState({ isVisible, children });
+  }
+
+  handleClick = event => {
+    this.setState({ isVisible: !this.state.isVisible });
+  };
+
+  render() {
+    const { isVisible, children } = this.state;
+    return (
+      <>
+        <button onClick={this.handleClick}>view comments</button>
+        {isVisible && children}
+      </>
+    );
+  }
+}
 
 export default ViewToggler;
