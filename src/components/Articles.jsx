@@ -35,6 +35,7 @@ class Articles extends Component {
         <SortBar
           updateArticles={this.updateArticles}
           topic={this.props.topic_slug}
+          order={this.props.order}
         />
         <main>
           <h2>Articles</h2>

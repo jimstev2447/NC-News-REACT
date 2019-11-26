@@ -32,9 +32,6 @@ exports.getComments = article_id => {
     });
 };
 
-exports.patchVotes = (path, inc_votes) => {
-  console.log(`${baseUrl}${path}`);
-  return axios.patch(`${baseUrl}${path}`, { inc_votes }).then(data => {
-    console.log(data);
-  });
+exports.patchVotes = (id, type, inc_votes) => {
+  return axios.patch(`${baseUrl}/api/${type}/${id}`, { inc_votes });
 };

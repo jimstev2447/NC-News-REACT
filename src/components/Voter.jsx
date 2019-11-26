@@ -4,36 +4,30 @@ import * as api from '../uitls/utils';
 class Voter extends Component {
   state = {
     votes: 0,
-    path: '',
-    hasVoted: false
+    path: ''
   };
 
-  componentDidMount() {
-    this.setState({
-      votes: this.props.votes,
-      path: `/api/${this.props.type}/${this.props.id}`
-    });
-  }
+  componentDidMount() {}
 
   handleVote = ({ target: { name } }) => {
-    const { path, votes } = this.state;
-    const vote_inc = name === 'upVote' ? 1 : -1;
-    api.patchVotes(path, vote_inc);
-    this.setState({ hasVoted: true, votes: votes + vote_inc });
+    const { votes } = this.state;
+    const { id, type } = this.props;
+    const vote_inc = +name;
+    api.patchVotes(id, type, vote_inc);
+    this.setState({ votes: votes + vote_inc });
   };
 
   render() {
-    const { votes, hasVoted } = this.state;
-    return hasVoted ? (
-      <p>{votes}</p>
-    ) : (
+    const { votes } = this.state;
+    return (
       <div>
-        <button name="upVote" onClick={this.handleVote}>
-          upVote
+        <h6>Votes</h6>
+        <button name="1" onClick={this.handleVote} disabled={votes > 0}>
+          +
         </button>
-        <p>{votes}</p>
-        <button name="downVote" onClick={this.handleVote}>
-          downVote
+        <p>{this.props.votes + votes}</p>
+        <button name="-1" onClick={this.handleVote} disabled={votes < 0}>
+          -
         </button>
       </div>
     );

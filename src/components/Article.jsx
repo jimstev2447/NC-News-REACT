@@ -3,8 +3,8 @@ import * as api from '../uitls/utils';
 import Loader from './Loader';
 import ViewToggler from './ViewToggler';
 import Voter from './Voter';
-import { Link } from '@reach/router';
 import Comments from './Comments';
+import AddComment from './AddComment';
 
 class Article extends Component {
   state = {
@@ -18,16 +18,6 @@ class Article extends Component {
       this.setState({ article, isLoading: false });
     });
   }
-
-  // componentDidUpdate(previousProps) {
-  //   const { article_id } = this.props;
-
-  //   api.getComments(article_id).then(comments => {
-  //     this.setState({ comments });
-  //   });
-  // }
-
-  //
 
   render() {
     const {
@@ -47,12 +37,12 @@ class Article extends Component {
           <p>comment count: {comment_count}</p>
         </article>
 
-        <ViewToggler>
+        <ViewToggler buttonName="Show Comments">
           <Comments article_id={this.props.article_id} />
         </ViewToggler>
-        <Link to="/">
-          <button>Home</button>
-        </Link>
+        <ViewToggler buttonName="Add Comment">
+          <AddComment />
+        </ViewToggler>
       </main>
     );
   }

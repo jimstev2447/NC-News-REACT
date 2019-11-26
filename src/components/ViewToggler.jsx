@@ -17,7 +17,7 @@ class ViewToggler extends Component {
     const { isVisible, children } = this.state;
     return (
       <>
-        <button onClick={this.handleClick}>view comments</button>
+        <button onClick={this.handleClick}>{this.props.buttonName}</button>
         {isVisible && children}
       </>
     );
