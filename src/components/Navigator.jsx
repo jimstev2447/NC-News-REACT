@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
-import * as api from './utils';
+import * as api from '../uitls/utils';
 import Loader from './Loader';
 import TopicButton from './TopicButton';
 

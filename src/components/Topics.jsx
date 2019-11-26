@@ -1,6 +1,6 @@
 import TopicCard from './TopicCard';
 import React, { Component } from 'react';
-import * as api from './utils';
+import * as api from '../uitls/utils';
 import Loader from './Loader';
 
 class Topics extends Component {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as api from './utils';
+import * as api from '../uitls/utils';
 import CommentCard from './CommentCard';
 import Loader from './Loader';
 import ViewToggler from './ViewToggler';

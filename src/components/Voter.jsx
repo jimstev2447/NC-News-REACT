@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as api from './utils';
+import * as api from '../uitls/utils';
 
 class Voter extends Component {
   state = {

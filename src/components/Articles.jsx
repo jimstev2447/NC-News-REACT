@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ArticleCard from './ArticleCard';
 import SortBar from './SortBar';
 import Loader from './Loader';
-import * as api from './utils';
+import * as api from '../uitls/utils';
 import Pagination from './Pagination';
 
 class Articles extends Component {
