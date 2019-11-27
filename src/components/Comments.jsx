@@ -4,11 +4,13 @@ import * as api from '../uitls/utils';
 import Loader from './Loader';
 import ViewToggler from './ViewToggler';
 import AddComment from './AddComment';
+import ErrHandler from './ErrHandler';
 
 class Comments extends Component {
   state = {
     comment: [],
-    isLoading: true
+    isLoading: true,
+    err: ''
   };
 
   componentDidMount() {
@@ -17,9 +19,21 @@ class Comments extends Component {
 
   fetchComments = () => {
     this.setState({ isLoading: true }, () => {
-      api.getComments(this.props.article_id).then(comments => {
-        this.setState({ comments, isLoading: false });
-      });
+      api
+        .getComments(this.props.article_id)
+        .then(comments => {
+          this.setState({ comments, isLoading: false, err: '' });
+        })
+        .catch(
+          ({
+            response: {
+              status,
+              data: { msg }
+            }
+          }) => {
+            this.setState({ err: { msg, status }, isLoading: false });
+          }
+        );
     });
   };
 
@@ -28,9 +42,11 @@ class Comments extends Component {
   };
 
   render() {
-    const { isLoading, comments } = this.state;
+    const { isLoading, comments, err } = this.state;
     const { username, article_id } = this.props;
+
     if (isLoading) return <Loader />;
+    if (err) return <ErrHandler status={err.status} msg={err.msg} />;
     return (
       <section>
         <ViewToggler buttonName="Add Comment">
