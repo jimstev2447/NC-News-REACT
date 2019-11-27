@@ -49,3 +49,7 @@ exports.postComment = (article_id, comment) => {
       return data.comment;
     });
 };
+
+exports.deleteComment = comment_id => {
+  return axios.delete(`${baseUrl}/api/comments/${comment_id}`);
+};

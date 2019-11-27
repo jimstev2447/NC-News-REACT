@@ -12,10 +12,16 @@ class Comments extends Component {
   };
 
   componentDidMount() {
-    api.getComments(this.props.article_id).then(comments => {
-      this.setState({ comments, isLoading: false });
-    });
+    this.fetchComments();
   }
+
+  fetchComments = () => {
+    this.setState({ isLoading: true }, () => {
+      api.getComments(this.props.article_id).then(comments => {
+        this.setState({ comments, isLoading: false });
+      });
+    });
+  };
 
   handleAddComment = comment => {
     this.setState({ comments: [comment, ...this.state.comments] });
@@ -35,7 +41,14 @@ class Comments extends Component {
           />
         </ViewToggler>
         {comments.map(comment => {
-          return <CommentCard key={comment.comment_id} {...comment} />;
+          return (
+            <CommentCard
+              key={comment.comment_id}
+              {...comment}
+              username={username}
+              fetchComments={this.fetchComments}
+            />
+          );
         })}
       </section>
     );
