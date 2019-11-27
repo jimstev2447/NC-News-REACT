@@ -41,3 +41,11 @@ exports.getUsers = () => {
     return data.users;
   });
 };
+
+exports.postComment = (article_id, comment) => {
+  return axios
+    .post(`${baseUrl}/api/articles/${article_id}/comments`, comment)
+    .then(({ data }) => {
+      return data.comment;
+    });
+};

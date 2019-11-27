@@ -23,11 +23,16 @@ class Comments extends Component {
 
   render() {
     const { isLoading, comments } = this.state;
+    const { username, article_id } = this.props;
     if (isLoading) return <Loader />;
     return (
       <section>
         <ViewToggler buttonName="Add Comment">
-          <AddComment username={this.props.username} />
+          <AddComment
+            username={username}
+            handleAddComment={this.handleAddComment}
+            article_id={article_id}
+          />
         </ViewToggler>
         {comments.map(comment => {
           return <CommentCard key={comment.comment_id} {...comment} />;
