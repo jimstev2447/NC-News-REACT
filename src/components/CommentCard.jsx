@@ -17,13 +17,15 @@ const CommentCard = ({
     });
   };
   return (
-    <aside>
+    <aside className="CommentCard">
       <h4>{author}</h4>
       <p>{created_at}</p>
-      <p>{body}</p>
+      <p className="body">{body}</p>
       <Voter votes={votes} id={comment_id} type="comments" />
       {author === username && (
-        <button onClick={handleClick}>delete comment</button>
+        <button className="DeleteComment" onClick={handleClick}>
+          delete comment
+        </button>
       )}
     </aside>
   );

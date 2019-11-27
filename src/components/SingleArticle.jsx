@@ -42,21 +42,22 @@ class SingleArticle extends Component {
     if (isLoading) return <Loader />;
     if (err) return <ErrHandler status={err.status} msg={err.msg} />;
     return (
-      <main>
-        <article>
+      <main className="SingleArticlePage">
+        <article className="SingleArticle">
           <Voter votes={votes} type="articles" id={article_id} />
           <h3>{title}</h3>
           <p>Author: {author}</p>
           <p>{body}</p>
           <p>comment count: {comment_count}</p>
         </article>
-
-        <ViewToggler buttonName="Show Comments">
-          <Comments
-            article_id={this.props.article_id}
-            username={this.props.username}
-          />
-        </ViewToggler>
+        <section className="Comments">
+          <ViewToggler buttonName="Show/Hide Comments">
+            <Comments
+              article_id={this.props.article_id}
+              username={this.props.username}
+            />
+          </ViewToggler>
+        </section>
       </main>
     );
   }
