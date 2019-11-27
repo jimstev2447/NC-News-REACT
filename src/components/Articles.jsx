@@ -29,7 +29,8 @@ class Articles extends Component {
         .catch(
           ({
             response: {
-              data: { msg, status }
+              status,
+              data: { msg }
             }
           }) => {
             this.setState({ err: { msg, status }, isLoading: false });
@@ -41,7 +42,7 @@ class Articles extends Component {
   render() {
     const { articles, isLoading, err } = this.state;
     if (isLoading) return <Loader />;
-    if (err) return <ErrHandler err={err} />;
+    if (err) return <ErrHandler status={err.status} msg={err.msg} />;
     return (
       <div>
         <SortBar
