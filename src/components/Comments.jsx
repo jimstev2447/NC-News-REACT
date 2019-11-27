@@ -16,6 +16,11 @@ class Comments extends Component {
       this.setState({ comments, isLoading: false });
     });
   }
+
+  handleAddComment = comment => {
+    this.setState({ comments: [comment, ...this.state.comments] });
+  };
+
   render() {
     const { isLoading, comments } = this.state;
     if (isLoading) return <Loader />;
