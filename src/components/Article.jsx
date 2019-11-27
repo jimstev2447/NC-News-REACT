@@ -9,7 +9,7 @@ import ErrHandler from './ErrHandler';
 class Article extends Component {
   state = {
     article: {},
-    err: {},
+    err: '',
     isLoading: true
   };
 
@@ -18,7 +18,7 @@ class Article extends Component {
     api
       .getSingleArticle(article_id)
       .then(article => {
-        this.setState({ article, isLoading: false });
+        this.setState({ article, isLoading: false, err: '' });
       })
       .catch(
         ({

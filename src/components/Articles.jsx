@@ -7,7 +7,7 @@ import Pagination from './Pagination';
 import ErrHandler from './ErrHandler';
 
 class Articles extends Component {
-  state = { articles: [], isLoading: true, total_count: '', err: {} };
+  state = { articles: [], isLoading: true, total_count: '', err: '' };
 
   componentDidMount() {
     this.updateArticles();
@@ -24,7 +24,10 @@ class Articles extends Component {
       api
         .getArticles(query, sort_by)
         .then(({ articles, total_count }) => {
-          this.setState({ articles, isLoading: false, total_count }, () => {});
+          this.setState(
+            { articles, isLoading: false, total_count, err: '' },
+            () => {}
+          );
         })
         .catch(
           ({
