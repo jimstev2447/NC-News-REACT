@@ -252,3 +252,38 @@ footer button {
   color: var(--background);
   font-weight: 700;
 }
+
+.AddComment {
+  border: 2px solid var(--highlight);
+  border-radius: 10px;
+  margin: 15px 10px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  background: var(--background);
+  display: flex;
+  flex-direction: column;
+  justify-content: unset;
+}
+
+.AddComment textarea {
+  border: 2px solid var(--main);
+  border-radius: 15px;
+  margin: 10px 20px;
+  padding: 0px 10px;
+  height: 1em;
+  color: var(--main);
+  font-size: 1em;
+  resize: none;
+  height: 100px;
+  padding-top: 10px;
+}
+
+.AddComment .SubmitButton {
+  width: 100%;
+  height: 40px;
+  background: var(--highlight);
+  border: none;
+  margin: 0;
+  font-size: 1em;
+  color: var(--background);
+  font-weight: 700;
+}

@@ -32,21 +32,22 @@ class AddComment extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h4>Comment</h4>
-        <h5>
-          username:
-          {this.props.username
-            ? this.props.username
-            : 'you must be logged in to submit a comment'}
-        </h5>
-        <input
+      <form className="AddComment" onSubmit={this.handleSubmit}>
+        <h4>Add your comment below</h4>
+
+        {!this.props.username && (
+          <p>{'you must be logged in to submit a comment'}</p>
+        )}
+
+        <textarea
           onChange={this.handleChange}
           value={this.state.comment}
-          type="text"
+          type="textarea"
           required
-        ></input>
-        {this.props.username && <button>Submit</button>}
+        ></textarea>
+        {this.props.username && (
+          <button className="SubmitButton">Submit</button>
+        )}
       </form>
     );
   }
