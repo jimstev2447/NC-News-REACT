@@ -34,7 +34,6 @@ class Navigator extends Component {
     if (err) return <ErrHandler status={err.status} msg={err.msg} />;
     return (
       <nav>
-        nav bar
         <ul>
           <Link to="/">
             <button>Home</button>
@@ -45,12 +44,14 @@ class Navigator extends Component {
           {topics.map(topic => {
             return <TopicButton key={topic.slug} topicName={topic.slug} />;
           })}
+          <ViewToggler buttonName="sign in/out">
+            <UserLogin signInUser={this.props.signInUser} />
+          </ViewToggler>
         </ul>
-        <ViewToggler buttonName="sign in as ...">
-          <UserLogin signInUser={this.props.signInUser} />
-        </ViewToggler>
-        <aside>
-          user: {this.props.username ? this.props.username : 'please sign in'}
+        <aside className="UserWelcome">
+          {this.props.username
+            ? `Welcome ${this.props.username}`
+            : 'sign in to post comments/artices'}
         </aside>
       </nav>
     );

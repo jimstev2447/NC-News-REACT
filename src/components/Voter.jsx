@@ -20,13 +20,22 @@ class Voter extends Component {
   render() {
     const { votes } = this.state;
     return (
-      <div>
-        <h6>Votes</h6>
-        <button name="1" onClick={this.handleVote} disabled={votes > 0}>
+      <div className="Voter">
+        <button
+          className="upVote"
+          name="1"
+          onClick={this.handleVote}
+          disabled={votes > 0}
+        >
           +
         </button>
         <p>{this.props.votes + votes}</p>
-        <button name="-1" onClick={this.handleVote} disabled={votes < 0}>
+        <button
+          className="downVote"
+          name="-1"
+          onClick={this.handleVote}
+          disabled={votes < 0}
+        >
           -
         </button>
       </div>

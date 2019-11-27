@@ -25,7 +25,7 @@ class UserLogin extends Component {
     if (isLoading) return <Loader />;
     if (err) return <ErrHandler status={err.status} msg={err.msg} />;
     return (
-      <div>
+      <div className="Users">
         {users.map(({ username }) => {
           return (
             <button key={username} name={username} onClick={this.handleClick}>

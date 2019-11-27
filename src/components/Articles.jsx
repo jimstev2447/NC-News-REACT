@@ -47,14 +47,13 @@ class Articles extends Component {
     if (isLoading) return <Loader />;
     if (err) return <ErrHandler status={err.status} msg={err.msg} />;
     return (
-      <div>
+      <div className="ArticlesView">
         <SortBar
           updateArticles={this.updateArticles}
           topic={this.props.topic_slug}
           order={this.props.order}
         />
         <main>
-          <h2>Articles</h2>
           <ul>
             {articles.map(article => {
               return <ArticleCard key={article.article_id} {...article} />;

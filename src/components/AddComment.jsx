@@ -15,10 +15,19 @@ class AddComment extends Component {
     const body = this.state.comment;
     const { username, article_id } = this.props;
     event.preventDefault();
-    api.postComment(article_id, { username, body }).then(comment => {
-      this.props.handleAddComment(comment);
-      this.setState({ comment: '' });
-    });
+    api
+      .postComment(article_id, { username, body })
+      .then(comment => {
+        this.props.handleAddComment(comment);
+        this.setState({ comment: '' });
+      })
+      .catch(err => {
+        this.props.handleAddComment({
+          username,
+          article_id,
+          body: 'unable to process comment at this time'
+        });
+      });
   };
 
   render() {

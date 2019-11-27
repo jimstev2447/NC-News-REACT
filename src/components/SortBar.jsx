@@ -8,8 +8,8 @@ const SortBar = props => {
     updateArticles(topic, value);
   };
   return (
-    <div className="sortBar">
-      <h3>Sort bar</h3>
+    <div className="SortBar">
+      <h5>Sort by:</h5>
       <button onClick={handleClick} value="created_at">
         Created at
       </button>
