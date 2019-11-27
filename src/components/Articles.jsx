@@ -4,9 +4,10 @@ import SortBar from './SortBar';
 import Loader from './Loader';
 import * as api from '../uitls/utils';
 import Pagination from './Pagination';
+import ErrHandler from './ErrHandler';
 
 class Articles extends Component {
-  state = { articles: [], isLoading: true, total_count: '' };
+  state = { articles: [], isLoading: true, total_count: '', err: {} };
 
   componentDidMount() {
     this.updateArticles();
@@ -20,17 +21,28 @@ class Articles extends Component {
 
   updateArticles = (query = this.props.topic_slug, sort_by) => {
     this.setState({ isLoading: true }, () => {
-      api.getArticles(query, sort_by).then(({ articles, total_count }) => {
-        this.setState({ articles, isLoading: false, total_count }, () => {});
-      });
+      api
+        .getArticles(query, sort_by)
+        .then(({ articles, total_count }) => {
+          this.setState({ articles, isLoading: false, total_count }, () => {});
+        })
+        .catch(
+          ({
+            response: {
+              data: { msg, status }
+            }
+          }) => {
+            this.setState({ err: { msg, status }, isLoading: false });
+          }
+        );
     });
   };
 
   render() {
-    const { articles, isLoading } = this.state;
-    return isLoading ? (
-      <Loader />
-    ) : (
+    const { articles, isLoading, err } = this.state;
+    if (isLoading) return <Loader />;
+    if (err) return <ErrHandler err={err} />;
+    return (
       <div>
         <SortBar
           updateArticles={this.updateArticles}

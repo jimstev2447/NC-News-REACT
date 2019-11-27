@@ -6,6 +6,7 @@ import Articles from './components/Articles';
 import { Router } from '@reach/router';
 import Topics from './components/Topics';
 import Article from './components/Article';
+import ErrHandler from './components/ErrHandler';
 
 class App extends Component {
   state = {
@@ -27,6 +28,7 @@ class App extends Component {
           <Topics path="/topics/" />
           <Articles path="/topics/:topic_slug" />
           <Article path="articles/:article_id" username={username} />
+          <ErrHandler default />
         </Router>
       </div>
     );
