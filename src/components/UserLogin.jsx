@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import * as api from '../uitls/utils';
 import Loader from './Loader';
+import ErrHandler from './ErrHandler';
 
 class UserLogin extends Component {
   state = {
     users: [],
-    isLoading: true
+    isLoading: true,
+    err: ''
   };
 
   componentDidMount() {
     api.getUsers().then(users => {
-      this.setState({ users, isLoading: false });
+      this.setState({ users, isLoading: false, err: '' });
     });
   }
 
@@ -19,11 +21,12 @@ class UserLogin extends Component {
   };
 
   render() {
-    const { isLoading } = this.state;
+    const { isLoading, users, err } = this.state;
     if (isLoading) return <Loader />;
+    if (err) return <ErrHandler status={err.status} msg={err.msg} />;
     return (
       <div>
-        {this.state.users.map(({ username }) => {
+        {users.map(({ username }) => {
           return (
             <button key={username} name={username} onClick={this.handleClick}>
               {username}
