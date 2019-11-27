@@ -6,7 +6,7 @@ import Voter from './Voter';
 import Comments from './Comments';
 import ErrHandler from './ErrHandler';
 
-class Article extends Component {
+class SingleArticle extends Component {
   state = {
     article: {},
     err: '',
@@ -62,4 +62,4 @@ class Article extends Component {
   }
 }
 
-export default Article;
+export default SingleArticle;

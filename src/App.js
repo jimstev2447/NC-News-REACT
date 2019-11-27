@@ -5,7 +5,7 @@ import Navigator from './components/Navigator';
 import Articles from './components/Articles';
 import { Router } from '@reach/router';
 import Topics from './components/Topics';
-import Article from './components/Article';
+import SingleArticle from './components/SingleArticle';
 import ErrHandler from './components/ErrHandler';
 
 class App extends Component {
@@ -27,7 +27,7 @@ class App extends Component {
           <Articles path="/" />
           <Topics path="/topics/" />
           <Articles path="/topics/:topic_slug" />
-          <Article path="articles/:article_id" username={username} />
+          <SingleArticle path="articles/:article_id" username={username} />
           <ErrHandler default />
         </Router>
       </div>
