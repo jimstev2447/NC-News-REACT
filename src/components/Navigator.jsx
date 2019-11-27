@@ -5,21 +5,34 @@ import Loader from './Loader';
 import TopicButton from './TopicButton';
 import UserLogin from './UserLogin';
 import ViewToggler from './ViewToggler';
+import ErrHandler from './ErrHandler';
 
 class Navigator extends Component {
-  state = { topics: [], isLoading: true };
+  state = { topics: [], isLoading: true, err: '' };
 
   componentDidMount() {
-    api.getTopics().then(topics => {
-      this.setState({ topics, isLoading: false });
-    });
+    api
+      .getTopics()
+      .then(topics => {
+        this.setState({ topics, isLoading: false, err: '' });
+      })
+      .catch(
+        ({
+          response: {
+            status,
+            data: { msg }
+          }
+        }) => {
+          this.setState({ err: { msg, status }, isLoading: false });
+        }
+      );
   }
 
   render() {
-    const { isLoading, topics } = this.state;
-    return isLoading ? (
-      <Loader />
-    ) : (
+    const { isLoading, topics, err } = this.state;
+    if (isLoading) return <Loader />;
+    if (err) return <ErrHandler status={err.status} msg={err.msg} />;
+    return (
       <nav>
         nav bar
         <ul>
