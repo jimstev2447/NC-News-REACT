@@ -16,7 +16,7 @@ const ArticleCard = ({
         <h3>{title}</h3>
       </Link>
       <Voter votes={votes} type="articles" id={article_id} />
-      <div className="article info">
+      <div className="ArticleInfo">
         <p>By: {author}</p>
         <p>Created at: {created_at}</p>
         <p>Comments: {comment_count}</p>
