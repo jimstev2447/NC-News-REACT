@@ -30,12 +30,14 @@ class Topics extends Component {
     if (isLoading) return <Loader />;
     if (err) return <ErrHandler status={err.status} msg={err.msg} />;
     return (
-      <main>
-        <h2>All topics</h2>
-        {topics.map(topic => {
-          return <TopicCard key={topic.slug} {...topic} />;
-        })}
-      </main>
+      <>
+        <main className="TopicsPage">
+          <h2>Topics</h2>
+          {topics.map(topic => {
+            return <TopicCard key={topic.slug} {...topic} />;
+          })}
+        </main>
+      </>
     );
   }
 }

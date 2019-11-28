@@ -44,7 +44,7 @@ class Navigator extends Component {
           {topics.map(topic => {
             return <TopicButton key={topic.slug} topicName={topic.slug} />;
           })}
-          <ViewToggler buttonName="sign in/out">
+          <ViewToggler buttonName="Users">
             <UserLogin signInUser={this.props.signInUser} />
           </ViewToggler>
         </ul>
