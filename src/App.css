@@ -8,6 +8,10 @@
   --highlight: rgb(216, 117, 11);
 }
 
+button:focus {
+  outline: none;
+}
+
 /* global styles */
 
 .App {
@@ -72,7 +76,7 @@ nav ul button {
 
 /* sort bar styles */
 .App .SortBar {
-  height: 20px;
+  height: 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -90,6 +94,7 @@ nav ul button {
   color: var(--background);
   font-weight: 700;
   padding: 5px 0px 5px 0px;
+  font-size: 0.9em;
 }
 /* main styles */
 .App main {
@@ -171,8 +176,8 @@ nav ul button {
 }
 
 footer button {
-  font-size: 1.5em;
-  color: flovar(--background) ralwhite;
+  font-size: 1.75em;
+  color: var(--background);
   border: none;
   background: transparent;
 }
@@ -330,7 +335,7 @@ footer button {
   /* Articles Page Styles */
   .App main {
     display: grid;
-    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
   }
   .App main ul {
     grid-column: 2;

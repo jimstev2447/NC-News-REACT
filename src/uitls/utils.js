@@ -2,9 +2,9 @@ const axios = require('axios');
 
 const baseUrl = 'https://nc-news-project-backend-js.herokuapp.com';
 
-exports.getArticles = (topic, sort_by) => {
+exports.getArticles = (topic, sort_by, page) => {
   return axios
-    .get(`${baseUrl}/api/articles`, { params: { topic, sort_by } })
+    .get(`${baseUrl}/api/articles`, { params: { topic, sort_by, p: page } })
     .then(({ data }) => {
       return data;
     });

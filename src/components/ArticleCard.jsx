@@ -11,7 +11,7 @@ const ArticleCard = ({
   votes
 }) => {
   return (
-    <article className="ArticleCard">
+    <article className="ArticleCard" id="ArticleCard">
       <Link to={`/articles/${article_id}`}>
         <h3>{title}</h3>
       </Link>
