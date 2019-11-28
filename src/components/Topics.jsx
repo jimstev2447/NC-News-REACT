@@ -33,9 +33,11 @@ class Topics extends Component {
       <>
         <main className="TopicsPage">
           <h2>Topics</h2>
-          {topics.map(topic => {
-            return <TopicCard key={topic.slug} {...topic} />;
-          })}
+          <ul className="TopicList">
+            {topics.map(topic => {
+              return <TopicCard key={topic.slug} {...topic} />;
+            })}
+          </ul>
         </main>
       </>
     );

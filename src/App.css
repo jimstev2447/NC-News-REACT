@@ -49,6 +49,7 @@ h1 {
 }
 
 nav ul button {
+  max-height: 30px;
   font-size: 1em;
   height: 100%;
   width: 100%;
@@ -95,20 +96,17 @@ nav ul button {
   color: var(--main);
 }
 
-.App main h2 {
-  font-family: 'Oswald', Arial, Helvetica, sans-serif;
-  letter-spacing: 2px;
-  font-weight: 600;
-}
 .App main ul {
   background: var(--background);
   padding-top: 20px;
   display: grid;
+  grid-template-columns: 1fr minmax(300px, 6fr) 1fr;
 }
 
 /* Article card styles */
 
 .ArticleCard {
+  grid-column: 2/3;
   border: 3px solid var(--highlight);
   border-radius: 10px;
   margin: 15px 10px;
@@ -182,6 +180,7 @@ footer button {
 /* single article page style */
 
 .App main .SingleArticle {
+  width: minmax(300px 1fr);
   margin: 5px;
   border: 3px solid var(--highlight);
   border-radius: 5px;
@@ -210,6 +209,7 @@ footer button {
 }
 .App .SingleArticlePage .Comments {
   margin: 5px;
+  border: 3px solid var(--highlight);
   border-radius: 5px;
 }
 
@@ -295,6 +295,9 @@ footer button {
   grid-template-columns: 1fr 300px 1fr;
 }
 
+.TopicList {
+  grid-column: 2/3;
+}
 .TopicCard {
   grid-column: 2;
   border: 3px solid var(--highlight);
@@ -305,7 +308,7 @@ footer button {
 }
 
 .TopicsPage h2 {
-  grid-column: 1 /3;
+  grid-column: 2 /3;
   color: var(--main);
 }
 
@@ -320,4 +323,55 @@ footer button {
 
 .TopicCard a {
   text-decoration: none;
+}
+
+@media (min-width: 1000px) {
+  /* Articles Page Styles */
+  .App main {
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+  }
+  .App main ul {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, 3fr));
+    grid-gap: 30px;
+  }
+
+  .ArticleCard {
+    max-width: 400px;
+    grid-column: auto;
+  }
+
+  /* single article page */
+
+  .App main .SingleArticle {
+    grid-column-start: 2;
+  }
+  .App main .Comments {
+    grid-column-start: 2;
+  }
+  .App .SingleArticle h3 {
+    font-family: 'Oswald';
+    letter-spacing: 3px;
+    font-size: 2em;
+  }
+
+  .TopicsPage h2 {
+    grid-column: 2 /3;
+    color: var(--main);
+  }
+  .App main .TopicList {
+    grid-column: 2/3;
+    grid-template-columns: repeat(3, minmax(300px, 3fr));
+  }
+  .TopicCard {
+    grid-column: auto;
+  }
+  .TopicCard h2 {
+    color: var(--background);
+    font-family: 'Oswald';
+    font-size: 1.75em;
+    letter-spacing: 2px;
+  }
 }
