@@ -243,6 +243,7 @@ footer button {
   grid-column: 1 /3;
 }
 .CommentCard .DeleteComment {
+  grid-column: 1 / 3;
   width: 100%;
   height: 40px;
   background: var(--highlight);
