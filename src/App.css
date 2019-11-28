@@ -8,10 +8,6 @@
   --highlight: rgb(216, 117, 11);
 }
 
-button:focus {
-  outline: none;
-}
-
 /* global styles */
 
 .App {
@@ -19,7 +15,9 @@ button:focus {
   text-align: center;
   background: var(--background);
 }
-
+.ArticlesView {
+  height: 100%;
+}
 ul {
   margin: 0;
   padding: 0;
@@ -57,7 +55,7 @@ nav ul button {
   font-size: 1em;
   height: 100%;
   width: 100%;
-  border: none;
+  border: var(--main);
   background: var(--main);
   color: var(--background);
   font-weight: 700;
@@ -100,6 +98,7 @@ nav ul button {
 /* main styles */
 .App main {
   color: var(--main);
+  padding-bottom: 40vh;
 }
 
 .App main ul {
@@ -173,7 +172,7 @@ nav ul button {
   flex-direction: row;
   justify-content: space-evenly;
   position: sticky;
-  bottom: ;
+  bottom: 0;
   width: 100%;
 }
 
@@ -191,7 +190,8 @@ footer button :disabled {
 
 .App main .SingleArticle {
   width: minmax(300px 1fr);
-  margin: 5px;
+
+  margin: 30px 10px 10px 10px;
   border: 3px solid var(--highlight);
   border-radius: 5px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);

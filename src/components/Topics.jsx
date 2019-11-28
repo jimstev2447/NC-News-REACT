@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import * as api from '../uitls/utils';
 import Loader from './Loader';
 import ErrHandler from './ErrHandler';
+import AddTopic from './AddTopic';
 
 class Topics extends Component {
   state = { topics: [], isLoading: true, err: '' };
@@ -37,6 +38,7 @@ class Topics extends Component {
             {topics.map(topic => {
               return <TopicCard key={topic.slug} {...topic} />;
             })}
+            <AddTopic></AddTopic>
           </ul>
         </main>
       </>
