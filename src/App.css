@@ -96,6 +96,7 @@ nav ul button {
   padding: 5px 0px 5px 0px;
   font-size: 0.9em;
 }
+
 /* main styles */
 .App main {
   color: var(--main);
@@ -172,7 +173,8 @@ nav ul button {
   flex-direction: row;
   justify-content: space-evenly;
   position: sticky;
-  bottom: 0;
+  bottom: ;
+  width: 100%;
 }
 
 footer button {
@@ -180,6 +182,9 @@ footer button {
   color: var(--background);
   border: none;
   background: transparent;
+}
+footer button :disabled {
+  color: grey;
 }
 
 /* single article page style */
@@ -329,6 +334,22 @@ footer button {
 
 .TopicCard a {
   text-decoration: none;
+}
+
+/* ErrHandler styles */
+
+.ErrHandler div {
+  grid-column-start: 2;
+}
+.ErrHandler p {
+  grid-column-start: 2;
+}
+.ErrHandler h3 {
+  grid-column-start: 2;
+}
+
+.ArticlesView {
+  min-height: 100%;
 }
 
 @media (min-width: 1000px) {
