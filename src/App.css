@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
 
-/* color variables */
+/* color variables  rgb(10, 85, 85); */
 
 :root {
-  --main: rgb(10, 85, 85);
+  --main: rgb(0, 0, 0);
   --background: white;
   --highlight: rgb(216, 117, 11);
 }
