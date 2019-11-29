@@ -53,3 +53,17 @@ exports.postComment = (article_id, comment) => {
 exports.deleteComment = comment_id => {
   return axios.delete(`${baseUrl}/api/comments/${comment_id}`);
 };
+
+exports.postTopic = topic => {
+  return axios.post(`${baseUrl}/api/topics`, topic).then(({ data }) => {
+    return data.topic;
+  });
+};
+
+exports.postArticle = ({ title, body, author, topic }) => {
+  return axios
+    .post(`${baseUrl}/api/articles`, { title, author, topic, body })
+    .then(({ data }) => {
+      return data.article;
+    });
+};

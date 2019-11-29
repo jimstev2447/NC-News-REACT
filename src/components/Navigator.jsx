@@ -39,11 +39,16 @@ class Navigator extends Component {
             <button>Home</button>
           </Link>
           <Link to="/topics">
-            <button>Topics</button>
+            <button>All Topics</button>
           </Link>
-          {topics.map(topic => {
-            return <TopicButton key={topic.slug} topicName={topic.slug} />;
-          })}
+          <Link to="/articles/add-article">
+            <button>Add Article</button>
+          </Link>
+          <ViewToggler buttonName="Show Topics">
+            {topics.map(topic => {
+              return <TopicButton key={topic.slug} topicName={topic.slug} />;
+            })}
+          </ViewToggler>
           <ViewToggler buttonName="Users">
             <UserLogin signInUser={this.props.signInUser} />
           </ViewToggler>

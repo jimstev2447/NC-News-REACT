@@ -2,7 +2,6 @@ import React from 'react';
 import img from '../images/bug.png';
 
 const ErrHandler = err => {
-  console.log(err);
   return (
     <main className="ErrHandler">
       <h3>oops something went wrong ...</h3>

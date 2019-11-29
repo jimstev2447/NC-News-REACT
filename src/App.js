@@ -7,6 +7,7 @@ import { Router } from '@reach/router';
 import Topics from './components/Topics';
 import SingleArticle from './components/SingleArticle';
 import ErrHandler from './components/ErrHandler';
+import ArticleAdder from './components/ArticleAdder';
 
 class App extends Component {
   state = {
@@ -27,7 +28,8 @@ class App extends Component {
           <Articles path="/" />
           <Topics path="/topics/" />
           <Articles path="/topics/:topic_slug" />
-          <SingleArticle path="articles/:article_id" username={username} />
+          <SingleArticle path="/articles/:article_id" username={username} />
+          <ArticleAdder path="/articles/add-article" username={username} />
           <ErrHandler default />
         </Router>
       </div>
