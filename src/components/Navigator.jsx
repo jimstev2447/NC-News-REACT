@@ -44,11 +44,11 @@ class Navigator extends Component {
           <Link to="/articles/add-article">
             <button>Add Article</button>
           </Link>
-          <ViewToggler buttonName="Show Topics">
+          {/* <ViewToggler buttonName="Show Topics">
             {topics.map(topic => {
               return <TopicButton key={topic.slug} topicName={topic.slug} />;
             })}
-          </ViewToggler>
+          </ViewToggler> */}
           <ViewToggler buttonName="Users">
             <UserLogin signInUser={this.props.signInUser} />
           </ViewToggler>
