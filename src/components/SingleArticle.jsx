@@ -5,8 +5,10 @@ import ViewToggler from './ViewToggler';
 import Voter from './Voter';
 import Comments from './Comments';
 import ErrHandler from './ErrHandler';
+import UserContext from './UserContext';
 
 class SingleArticle extends Component {
+  static contextType = UserContext;
   state = {
     article: {},
     err: '',
@@ -33,6 +35,7 @@ class SingleArticle extends Component {
   }
 
   render() {
+    const username = this.context;
     const {
       article: { title, author, body, comment_count, votes, article_id },
       isLoading,
@@ -52,10 +55,7 @@ class SingleArticle extends Component {
         </article>
         <section className="Comments">
           <ViewToggler buttonName="Show/Hide Comments">
-            <Comments
-              article_id={this.props.article_id}
-              username={this.props.username}
-            />
+            <Comments article_id={this.props.article_id} username={username} />
           </ViewToggler>
         </section>
       </main>

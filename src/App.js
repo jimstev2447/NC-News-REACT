@@ -8,6 +8,8 @@ import Topics from './components/Topics';
 import SingleArticle from './components/SingleArticle';
 import ErrHandler from './components/ErrHandler';
 import ArticleAdder from './components/ArticleAdder';
+import Login from './components/Login';
+import { UserProvider } from './components/UserContext';
 
 class App extends Component {
   state = {
@@ -22,16 +24,19 @@ class App extends Component {
     const { username } = this.state;
     return (
       <div className="App">
-        <Header />
-        <Navigator username={username} signInUser={this.signInUser} />
-        <Router>
-          <Articles path="/" />
-          <Topics path="/topics/" />
-          <Articles path="/topics/:topic_slug" />
-          <SingleArticle path="/articles/:article_id" username={username} />
-          <ArticleAdder path="/articles/add-article" username={username} />
-          <ErrHandler default />
-        </Router>
+        <UserProvider value={username}>
+          <Header />
+          <Navigator signInUser={this.signInUser} />
+          <Router>
+            <Articles path="/" />
+            <Topics path="/topics/" />
+            <Articles path="/topics/:topic_slug" />
+            <SingleArticle path="/articles/:article_id" />
+            <ArticleAdder path="/articles/add-article" username={username} />
+            <Login path="/user-login" signInUser={this.signInUser} />
+            <ErrHandler default />
+          </Router>
+        </UserProvider>
       </div>
     );
   }

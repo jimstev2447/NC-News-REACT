@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import * as api from '../uitls/utils';
 import { Redirect, navigate } from '@reach/router';
+import UserContext from './UserContext';
 
 class ArticleAdder extends Component {
+  static contextType = UserContext;
+
   state = {
     title: '',
     body: '',
@@ -46,6 +49,7 @@ class ArticleAdder extends Component {
     const { topicValue, topicSlugs, description, title, body } = this.state;
     const isNewTopic = !topicSlugs.includes(topicValue);
     const lowerCaseTopic = topicValue.toLowerCase();
+    const username = this.context;
     event.preventDefault();
 
     if (isNewTopic) {
@@ -56,7 +60,7 @@ class ArticleAdder extends Component {
             title,
             body,
             topic: topic.slug,
-            author: this.props.username
+            author: username
           });
         })
         .then(article => {
@@ -68,7 +72,7 @@ class ArticleAdder extends Component {
           title,
           body,
           topic: lowerCaseTopic,
-          author: this.props.username
+          author: username
         })
         .then(article => {
           navigate(`/articles/${article.article_id}`);
@@ -86,9 +90,10 @@ class ArticleAdder extends Component {
       article_id
     } = this.state;
     const isNewTopic = topicSlugs.includes(topicValue);
-
+    const username = this.context;
     if (redirect) return <Redirect to={`/articles/${article_id}`} />;
-    return !this.props.username ? (
+
+    return !username ? (
       <h2>you must be logged in to post and article</h2>
     ) : (
       <form onSubmit={this.handleSubmit}>

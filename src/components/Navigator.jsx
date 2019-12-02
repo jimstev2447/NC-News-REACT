@@ -1,66 +1,42 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import { Link } from '@reach/router';
-import * as api from '../uitls/utils';
-import Loader from './Loader';
-import TopicButton from './TopicButton';
-import UserLogin from './UserLogin';
-import ViewToggler from './ViewToggler';
-import ErrHandler from './ErrHandler';
+import UserContext from './UserContext';
 
-class Navigator extends Component {
-  state = { topics: [], isLoading: true, err: '' };
+const Navigator = props => {
+  console.log(props);
+  const username = useContext(UserContext);
+  const { signInUser } = props;
+  const handleClick = event => {
+    signInUser('');
+  };
 
-  componentDidMount() {
-    api
-      .getTopics()
-      .then(topics => {
-        this.setState({ topics, isLoading: false, err: '' });
-      })
-      .catch(
-        ({
-          response: {
-            status,
-            data: { msg }
-          }
-        }) => {
-          this.setState({ err: { msg, status }, isLoading: false });
-        }
-      );
-  }
-
-  render() {
-    const { isLoading, topics, err } = this.state;
-    if (isLoading) return <Loader />;
-    if (err) return <ErrHandler status={err.status} msg={err.msg} />;
-    return (
-      <nav>
-        <ul>
-          <Link to="/">
-            <button>Home</button>
+  return (
+    <nav>
+      <ul>
+        <Link to="/">
+          <button>Home</button>
+        </Link>
+        <Link to="/topics">
+          <button>All Topics</button>
+        </Link>
+        <Link to="/articles/add-article">
+          <button>Add Article</button>
+        </Link>
+        {!username ? (
+          <Link to="/user-login">
+            <button>Sign in</button>
           </Link>
-          <Link to="/topics">
-            <button>All Topics</button>
-          </Link>
-          <Link to="/articles/add-article">
-            <button>Add Article</button>
-          </Link>
-          {/* <ViewToggler buttonName="Show Topics">
-            {topics.map(topic => {
-              return <TopicButton key={topic.slug} topicName={topic.slug} />;
-            })}
-          </ViewToggler> */}
-          <ViewToggler buttonName="Users">
-            <UserLogin signInUser={this.props.signInUser} />
-          </ViewToggler>
-        </ul>
-        <aside className="UserWelcome">
-          {this.props.username
-            ? `Welcome ${this.props.username}`
-            : 'sign in to post comments/artices'}
-        </aside>
-      </nav>
-    );
-  }
-}
+        ) : (
+          <button onClick={handleClick}>Sign Out</button>
+        )}
+      </ul>
+      <aside className="UserWelcome">
+        {username
+          ? `Welcome ${username}`
+          : 'sign in to post comments/artices test'}
+      </aside>
+    </nav>
+  );
+};
 
 export default Navigator;
