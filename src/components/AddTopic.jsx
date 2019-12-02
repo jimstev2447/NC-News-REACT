@@ -15,7 +15,7 @@ class AddTopic extends Component {
   handleSubmit = event => {
     const { slug, description } = this.state;
     event.preventDefault();
-    api.postTopic({ slug, description });
+    api.postTopic({ slug, description })
   };
 
   render() {

@@ -27,6 +27,7 @@ ul {
 
 h1 {
   margin: 0px;
+
   font-family: 'Oswald', Helvetica, sans-serif;
   font-weight: 900;
   letter-spacing: 2px;
@@ -45,10 +46,11 @@ h1 {
   top: 0;
   font-weight: 700;
   background: var(--main);
+  width: 100%;
 }
 .App nav ul {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 nav ul button {
@@ -325,6 +327,7 @@ footer button :disabled {
   margin: 10px 0 10px 0;
   display: grid;
   grid-template-columns: 1fr;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .TopicsPage h2 {
