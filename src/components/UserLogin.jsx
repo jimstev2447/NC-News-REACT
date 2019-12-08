@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { navigate } from '@reach/router';
 import * as api from '../uitls/utils';
 import Loader from './Loader';
 import ErrHandler from './ErrHandler';
@@ -22,11 +23,12 @@ class UserLogin extends Component {
 
   render() {
     const { isLoading, users, err } = this.state;
+    this.props.username && navigate('/');
     if (isLoading) return <Loader />;
     if (err) return <ErrHandler status={err.status} msg={err.msg} />;
     return (
       <div className="Users">
-        {users.map(({ username }) => {
+        {users.map(({ username, avatar_url }) => {
           return (
             <button key={username} name={username} onClick={this.handleClick}>
               {username}

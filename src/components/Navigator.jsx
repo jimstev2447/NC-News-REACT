@@ -3,7 +3,6 @@ import { Link } from '@reach/router';
 import UserContext from './UserContext';
 
 const Navigator = props => {
-  console.log(props);
   const username = useContext(UserContext);
   const { signInUser } = props;
   const handleClick = event => {

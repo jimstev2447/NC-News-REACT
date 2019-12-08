@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as api from '../uitls/utils';
-import { Redirect, navigate } from '@reach/router';
+import { navigate } from '@reach/router';
 import UserContext from './UserContext';
 
 class ArticleAdder extends Component {
@@ -75,7 +75,7 @@ class ArticleAdder extends Component {
           author: username
         })
         .then(article => {
-          navigate(`/articles/${article.article_id}`);
+          this.setState({ redirect: true, article_id: article.article_id });
         });
     }
   };
@@ -91,8 +91,11 @@ class ArticleAdder extends Component {
     } = this.state;
     const isNewTopic = topicSlugs.includes(topicValue);
     const username = this.context;
-    if (redirect) return <Redirect to={`/articles/${article_id}`} />;
-
+    console.log(this.state);
+    if (redirect) {
+      console.log('redirect');
+      navigate(`/articles/${article_id}`);
+    }
     return !username ? (
       <h2>you must be logged in to post and article</h2>
     ) : (

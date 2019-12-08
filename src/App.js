@@ -33,7 +33,11 @@ class App extends Component {
             <Articles path="/topics/:topic_slug" />
             <SingleArticle path="/articles/:article_id" />
             <ArticleAdder path="/articles/add-article" username={username} />
-            <Login path="/user-login" signInUser={this.signInUser} />
+            <Login
+              path="/user-login"
+              signInUser={this.signInUser}
+              username={username}
+            />
             <ErrHandler default />
           </Router>
         </UserProvider>
